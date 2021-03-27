@@ -1,0 +1,36 @@
+ /* mat-toolbar{
+    background-color: #22242A;
+}
+mat-sidenav-container{
+    background-color:aqua;
+}
+mat-sidenav-content{
+    background-color:aqua;
+}  */
+/* :host {
+    display: block;
+    background-color: aqua;
+   } 
+.container {
+   color: var(--col-pale);
+   height: 100vh;
+   font-family: "roboto-reg";
+   overflow-y: hidden;
+   } */
+
+   /* .example-container {
+    width: 400px;
+    height: 88%;
+    margin: 10px;
+    border: 1px solid #555;
+  }
+  .example-container {
+    position: absolute;
+    top: 1.25cm;
+    bottom: 0;
+    height: auto;
+    width: auto;
+    left:0;
+    right: 0;
+    background: #eee;
+  } */

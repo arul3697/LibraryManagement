@@ -1,0 +1,49 @@
+<div class="container" align="center" style="margin-top: 10rem">
+    <div class=" col-4 justify-content-center">
+      <!-- <a routerLinkActive="active" [routerLink]="['librarianLogin']">Librarian Login</a> -->
+       &nbsp;
+  <a href="login">User Login</a>
+      <div class="card">
+        <div class="card-header" style="color:darkblue">
+          <h1>Login Form</h1>
+        </div>
+        <div class="card-body">
+          <h4 *ngIf='msg' align="center" style="color:red;">{{msg}}</h4>
+          <h4 *ngIf="sendmail" align="center" style="color:green;">{{sendmail}}</h4>
+          <h4 *ngIf="registerMsg" align="center" style="color:green;">{{registerMsg}}</h4>
+          <br>
+          <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+          </div>      
+          <form #loginform="ngForm" (ngSubmit)="loginLibrarian()" *ngIf="!isLoading">              
+            <div class="input-group form-group">						
+              <input type="text" name="name" class="form-control"
+                placeholder="Librarian Name" [(ngModel)]="librarian.name" required="true" #name="ngModel"
+                [class.is-invalid]="name.invalid && name.touched">
+            </div>
+            <!-- <div *ngif="name.errors && (name.invalid && name.touched)">
+              <small class="text-danger" *ngif="name.errors.required">User Name is required field</small>
+            </div> -->
+            <!-- <small class ="text-danger" [class.d-none]="name.valid || name.untouched">User Name is required field</small> -->
+            <div class="input-group form-group">
+              <input type="password" name="password" class="form-control" 
+                placeholder="Password" [(ngModel)]="librarian.password" required="true" #password="ngModel"
+                [class.is-invalid]="password.invalid && password.touched">
+              </div>
+              <!-- <div *ngif="password.errors && (password.invalid && password.touched)">
+                <small class="text-danger" *ngif="password.errors.required">Password is required field</small>
+              </div> -->
+              <!-- <small class ="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>						   -->
+            <div class="form-group">
+              <button type="submit"                       
+                  class="btn btn-primary" [disabled]=!loginform.valid>Login</button>
+              </div>			
+            <div class="form-group"><a [routerLink]="['reset']" style="margin-left:1px;color:darkgreen">Forget Password ?</a>
+            
+              <!-- <a [routerLink]="['register']" style="margin-left:60px;color:darkgreen">New User?</a> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

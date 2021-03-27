@@ -1,0 +1,111 @@
+<div class="container mt-4 ">
+	<div class="row justify-content-center">
+		<div class="col-md-5">
+			<div class="card">
+				<div class="card-header" align="center">
+					<div *ngIf="!book.id">
+						<h2>ADD Book</h2></div>
+						<div *ngIf="book.id">
+							<h2>Update Book</h2></div>
+				</div>
+				<div class="card-body">
+					<form class="form-horizontal" #savebook="ngForm" enctype="multipart/form-data" (ngSubmit)="saveBook()">
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Book Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="name" id="name"
+																				   placeholder="Enter Book Name" required [(ngModel)]="book.name" #name="ngModel"
+																				   [class.is-invalid]="name.invalid && name.touched" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="author_name" class="cols-sm-2 control-label">Author
+								Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="author_name" id="author_name"
+																				   placeholder="Enter Author Name" required
+                                                                                   [(ngModel)]="book.author_name" #author_name="ngModel"
+																				   [class.is-invalid]="author_name.invalid && author_name.touched" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="publisher_name" class="cols-sm-2 control-label">Publisher
+								Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="publisher_name"
+																				   id="publisher_name" placeholder="Enter Publisher Name"
+																				   required [(ngModel)]="book.publisher_name" #publisher_name="ngModel"
+																				   [class.is-invalid]="publisher_name.invalid && publisher_name.touched" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="contact_number" class="cols-sm-2 control-label">Contact
+								Number</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="number"
+																				   min="0" class="form-control" name="contact_number"
+																				   id="contact_number" placeholder="Contact Number" required
+                                                                                   [(ngModel)]="book.contact_number" #contact_number="ngModel"
+																				   [class.is-invalid]="contact_number.invalid && contact_number.touched" />
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="form-group">
+							<label for="fileName" class="cols-sm-2 control-label">book link
+								</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="fileName"
+																				   id="fileName" placeholder="Enter book link (Url)"
+																				   required [(ngModel)]="book.fileName" #fileName="ngModel"
+																				   [class.is-invalid]="fileName.invalid && fileName.touched" />
+								</div>
+							</div>
+						</div> -->
+						<div class="form-group">
+							<label for="file" class="cols-sm-2 control-label">Choose files
+							</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									 <span class="input-group-addon"></span> 
+									 <!-- <input type="file" accept="application/pdf" (change)="onFileChanged($event)"> -->
+									 <input type="file" (change)="selectFile($event)">
+									 <!-- <input type="file"
+                                        min="0" class="form-control" name="file"
+                                        id="file" required
+                                        [(ngModel)]="book.file" accept="application/pdf" #file="ngModel"
+										[class.is-invalid]="file.invalid && file.touched" /> -->
+								</div>
+								<div *ngIf="currentFileUpload" class="progress">
+									<div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+									  aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+									  {{progress.percentage}}%</div>
+								  </div>
+                            <h4 align="center" style="color:red">*(accept pdf files only and max file size-30mb)</h4>
+                            </div>
+						</div>
+							<div class="form-group " align="center">
+								<button type="submit"
+									   class="btn btn-primary" [disabled]=!savebook.valid>ADD</button>
+								<div class="form-group " align="right">
+									<a (click)="onBack()" title="Back"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size:25px;color: blue;"></i></a>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

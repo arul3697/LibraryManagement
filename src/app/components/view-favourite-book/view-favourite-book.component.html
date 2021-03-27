@@ -1,0 +1,24 @@
+<div class="container" align="center"
+                style="margin-top: 2%; margin-left: 1%;">
+                <form>
+					<h2 style="color: darkblue">Favourite Book List</h2>
+					<table class="table table-hover" style="background-color:transparent; border: 2px solid green;width:500px;">
+						<thead class="thead-dark">
+							<tr>
+								<!-- <th>S.No</th> -->
+								<th>Book Name</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody >							
+								<tr>
+									<tr *ngFor="let viewFavouriteBookList of viewFavouriteBook ">
+									<td>{{viewFavouriteBookList.bookName}}</td>
+								    <td>
+										<button (click)="deleteFavouriteBook(viewFavouriteBookList.id)" class='btn btn-danger'>Delete</button>
+									</td>
+								</tr>
+						</tbody>
+                    </table>
+                    </form>
+			</div>

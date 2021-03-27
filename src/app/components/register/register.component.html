@@ -1,0 +1,174 @@
+<div class="container mt-2">
+	<div class="row justify-content-center">
+		<div class="col-md-5">
+			<div class="card">
+				<div class="card-header" align="center">
+					<div *ngIf="!user.id">
+					<h2>Register Form</h2></div>
+					<div *ngIf="user.id">
+						<h2>Update User</h2></div>
+				</div>
+				<div class="card-body">
+					<h3 *ngIf="error" align="center" style="color:red;">{{error}}</h3>
+					<form class="form-horizontal" #register="ngForm" (ngSubmit)="saveUser()">
+						<!-- <input type="hidden" class="form-control"  id="id" required [(ngModel)]="user.id" name="id"> -->
+						<div class="form-group">
+							<label for="full_name" class="cols-sm-2 control-label">Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="full_name"  
+																				    id="full_name"
+																				   placeholder="Enter Your Name"  [(ngModel)]="user.full_name" required  #full_name="ngModel"
+																				   [class.is-invalid]="full_name.invalid && full_name.touched" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="email_id" class="cols-sm-2 control-label">Email
+								Id</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="email"
+																				   class="form-control" name="email_id"
+																				   id="email_id"
+																				   placeholder="Enter Email Id" [(ngModel)]="user.email_id" required #email_id="ngModel"
+																				   [class.is-invalid]="email_id.invalid && email_id.touched"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="address" class="cols-sm-2 control-label">Address</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="address" 
+																				   id="address"
+																				   placeholder="Enter Address" [(ngModel)]="user.address" required #address="ngModel"
+																				   [class.is-invalid]="address.invalid && address.touched"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="contact_number" class="cols-sm-2 control-label">Contact
+								Number</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="number"
+																				   min="0" class="form-control" name="contact_number" 
+																				   id="contact_number"
+																				   placeholder="Contact Number" [(ngModel)]="user.contact_number" required #contact_number="ngModel"
+																				   [class.is-invalid]="contact_number.invalid && contact_number.touched" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">User Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> <input type="text"
+																				   class="form-control" name="name" 
+																				   id="name"
+																				   placeholder="Enter User Name" [(ngModel)]="user.name" required #name="ngModel"
+																				   [class.is-invalid]="name.invalid && name.touched" />
+								</div>
+							</div>
+						</div>
+
+
+						
+						<div *ngIf="!user.id">
+							<div class="form-group">
+								<label for="password" class="cols-sm-2 control-label">Password</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input
+											type="password" class="form-control" name="password" 
+											id="password"
+										    placeholder="Enter Password" [(ngModel)]="user.password" required #password="ngModel"
+											[class.is-invalid]="password.invalid && password.touched" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="confirm_password" class="cols-sm-2 control-label">Confirm Password</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input
+											type="text" class="form-control" name="confirm_password" 
+											id="confirm_password"
+										    placeholder="Enter Confirm Password" [(ngModel)]="user.confirm_password" required #confirm_password="ngModel"
+											[class.is-invalid]="confirm_password.invalid && confirm_password.touched" />
+									</div>
+								</div>
+							</div>
+							<h3 *ngIf="passwordError" align="center" style="color:red;">{{passwordError}}</h3>
+						</div>
+						<div *ngIf=user.id>
+							<div class="form-group">
+								<label for="password" class="cols-sm-2 control-label">Password</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input
+											type="hidden" class="form-control" name="password" 
+											id="password"
+										    placeholder="Enter Password" [(ngModel)]="user.password" required #password="ngModel"
+											[class.is-invalid]="password.invalid && password.touched" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="confirm_password" class="cols-sm-2 control-label">Confirm Password</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input
+											type="hidden" class="form-control" name="confirm_password"
+											id="confirm_password"
+										    placeholder="Enter Confirm Password" [(ngModel)]="user.confirm_password" required #confirm_password="ngModel"
+											[class.is-invalid]="confirm_password.invalid && confirm_password.touched" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="libraryName" class="cols-sm-3 control-label">Library Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"></span> 
+									<input type="text"
+																				   class="form-control" name="libraryName" 
+																				   id="libraryName"
+																				   placeholder="Enter Library Name" [(ngModel)]="user.libraryName" required #libraryName="ngModel"
+																				   [class.is-invalid]="libraryName.invalid && libraryName.touched" />
+																				   <br>
+																				   <div>
+																					<select id="personData" style="width: 400px;">
+																						<option value="">-- Library List --</option>
+																						<option *ngFor="let librarian of library " value="{{librarian.id}}">{{librarian.libraryName}}</option>
+																						</select>
+																					</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group row=1" align="center">
+							<!-- <div *ngif=!user.id> -->
+							<button type="submit"
+									class="btn btn-primary" [disabled]=!register.valid>submit</button>
+										<!-- <button type="submit" *ngif=user.id
+												class="btn btn-primary">Update</button> -->
+							<div class="form-group" align="right">
+								<a (click)="Back()" title="Back"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size:25px;color: blue;"></i></a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+
+  

@@ -1,0 +1,24 @@
+<div class="container" align="center"
+                style="margin-top: 2%; margin-left: 1%">
+                <form>
+					<h2 style="color: darkblue">Notification</h2>
+					<table class="table table-hover" style="background-color:transparent;border: 2px solid green;width:1000px">
+						<thead class="thead-dark">
+							<tr>
+								<!-- <th>S.No</th> -->
+								<th>User Name</th>
+								<th>Subject</th>
+								<th>Message</th>
+							</tr>
+						</thead>
+						<tbody >							
+								<tr>
+									<tr *ngFor="let viewNotification of notification ">
+									<td>{{viewNotification.username}}</td>
+									<td>{{viewNotification.subject}}</td>
+									<td>{{viewNotification.message}}</td>
+								</tr>
+						</tbody>
+                    </table>
+                    </form>
+			</div>

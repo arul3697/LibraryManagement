@@ -1,0 +1,166 @@
+<div> 
+	<mat-sidenav-container class="example-container">
+		<mat-sidenav mode="side" opened>
+			<img class="logo" src="../../assets/img/obs.jpg">
+			<br>
+			<!-- <img src="assets/img/obs.png" align="center"> -->
+			<!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+			<mat-menu #menu="matMenu"> -->
+			  <a class="nav-link" *ngIf="roleId && roleId != '1' && roleId != '2'" align="center" mat-menu-item [routerLink]="['viewBooks']">View Books</a>
+			  <a class="nav-link" *ngIf="roleId && roleId != '1' && roleId != '2'" align="center" mat-menu-item [routerLink]="['viewNotification']">Notification</a>
+			  <a class="nav-link" *ngIf="roleId && roleId != '1' && roleId != '2'" align="center" mat-menu-item [routerLink]="['request']">Request Box</a>
+			  <a class="nav-link" *ngIf="roleId && roleId != '1' && roleId != '2'" align="center" mat-menu-item [routerLink]="['viewReqList']">Request List</a>
+			  <a class="nav-link" *ngIf="roleId && roleId != '1' && roleId != '2'" align="center" mat-menu-item [routerLink]="['viewFavouriteBook']">Favourite Books</a>
+
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['viewUser']">View Users</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['viewLibrarianList']">View Librarian</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['viewBook']">View Books</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['viewUserRequest']">View User Request</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['viewLibrarianRequest']">View Librarian Request</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['adduser']">Add User</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['addLibrarian']">Add Librarian</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['addbook']">Add Book</a>
+				<a class="nav-link" *ngIf="roleId == '1'" align="center" mat-menu-item [routerLink]="['adminReplyBox']">Reply Box</a>
+
+				<a class="nav-link" *ngIf="roleId == '2'" align="center" mat-menu-item [routerLink]="['viewBook']">View Books</a>
+				<a class="nav-link" *ngIf="roleId == '2'" align="center" mat-menu-item [routerLink]="['viewUserRequest']">View User Request</a>
+				<a class="nav-link" *ngIf="roleId == '2'" align="center" mat-menu-item [routerLink]="['viewAdminReply']">View Admin Reply</a>
+				<a class="nav-link" *ngIf="roleId == '2'" align="center" mat-menu-item [routerLink]="['addbook']">Add Book</a>
+				<a class="nav-link" *ngIf="roleId == '2'" align="center" mat-menu-item [routerLink]="['librarianTextBox']">Request Box</a>
+				<a class="nav-link" *ngIf="roleId == '2'" align="center" mat-menu-item [routerLink]="['sendNotification']">Nodification Box</a>
+			<!-- </mat-menu> -->   
+		</mat-sidenav> 
+		<mat-sidenav-content>
+			<mat-toolbar> 
+				<span class="example-spacer"></span>
+				<div *ngIf="library ==='null'">
+				<h3 style="color: aqua;">Welcome to A2tp Online Book Store..!</h3>
+			</div>
+			<div>
+				<h3 style="color: aqua;">Welcome {{library}}..!</h3>
+			</div>
+				<span class="example-spacer"></span>
+				<button mat-button [matMenuTriggerFor]="menu" title="Profile">
+					<div *ngIf="!profileImage"><img class="profilePic" src="../../assets/img/profile2.png"></div>
+					<div *ngIf="profileImage">					
+						<img class="profilePic" [src]="imagePath"/>
+					</div>
+				</button>
+					 <mat-menu #menu="matMenu">
+						<a class="nav-link" mat-menu-item [routerLink]="['profile']" >Profile</a>
+						<a class="nav-link"  mat-menu-item (click)="Logout()" >Logout</a> 
+					 </mat-menu>
+			</mat-toolbar>
+			<!-- <h3 class="alert alert-success" role="alert" align="center" style="color: darkblue;">Welcome  {{loginName}}...!!</h3> -->
+			
+			<div *ngIf="roleId == '1'">
+				<div class="container" align="center"
+                style="margin-top: 10%; margin-left: 2%">
+				<app-counts></app-counts>
+				</div>
+			</div>
+			<router-outlet></router-outlet>
+		</mat-sidenav-content>
+	  </mat-sidenav-container>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="height:100%;background-color: aqua;">
+	<mat-toolbar> 
+	  <span class="example-spacer"></span>
+	  <h3 style="color: aqua;">Online</h3>&nbsp;<span style="color:cornflowerblue">Library</span>
+	  <span class="example-spacer"></span>
+	</mat-toolbar>
+	<router-outlet></router-outlet>
+	</div> -->
+
+<!-- <div *ngIf="loginName === 'Admin'">
+<mat-sidenav-container class="example-container">
+	<mat-sidenav mode="side" opened>
+		<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+		<mat-menu #menu="matMenu">
+		  <a class="nav-link"  mat-menu-item [routerLink]="['viewUser']">View Users</a>
+		  <a class="nav-link"  mat-menu-item [routerLink]="['viewBook']">View Books</a>
+		  <a class="nav-link"  mat-menu-item [routerLink]="['viewUserRequest']">View User Request</a>
+		  <a class="nav-link"  mat-menu-item [routerLink]="['viewLibrarianRequest']">View Librarian Request</a>
+		  <a class="nav-link"  mat-menu-item [routerLink]="['adduser']">Add User</a>
+		  <a class="nav-link"  mat-menu-item [routerLink]="['addbook']">Add Book</a>
+		  <a class="nav-link"  mat-menu-item [routerLink]="['adminReplyBox']">Reply Box</a>
+		</mat-menu>
+		<a class="nav-link"  mat-menu-item (click)="Logout()">Logout</a>  
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<h3 class="alert alert-success" role="alert" align="center" style="color: darkblue;">Welcome  {{loginName}}...!!</h3>
+		<router-outlet></router-outlet> 
+	</mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+  <div *ngIf="loginName === 'librarian'">
+	<mat-sidenav-container class="example-container">
+		<mat-sidenav mode="side" opened>
+			<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+			<mat-menu #menu="matMenu">
+			  <a class="nav-link"  mat-menu-item [routerLink]="['viewBook']">View Books</a>
+			  <a class="nav-link"  mat-menu-item [routerLink]="['viewUserRequest']">View User Request</a>
+			  <a class="nav-link"  mat-menu-item [routerLink]="['viewAdminReply']">View Admin Reply</a>
+			  <a class="nav-link"  mat-menu-item [routerLink]="['addbook']">Add Book</a>
+			  <a class="nav-link"  mat-menu-item [routerLink]="['librarianTextBox']">Request Box</a>
+			  <a class="nav-link"  mat-menu-item [routerLink]="['sendNotification']">Nodification Box</a>
+			</mat-menu>
+			<a class="nav-link"  mat-menu-item (click)="Logout()">Logout</a>    
+		</mat-sidenav> 
+		<mat-sidenav-content>
+			<h3 class="alert alert-success" role="alert" align="center" style="color: darkblue;">Welcome  {{loginName}}...!!</h3>
+			<router-outlet></router-outlet>
+		</mat-sidenav-content>
+	  </mat-sidenav-container>
+	</div>
+
+	<div *ngIf="loginName && loginName != 'Admin' && loginName != 'librarian'"> 
+		<mat-sidenav-container class="example-container">
+			<mat-sidenav mode="side" opened>
+				<img class="logo" src="../../assets/img/obs.jpg">
+				<br>
+				<!-- <img src="assets/img/obs.png" align="center"> -->
+				<!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+				<mat-menu #menu="matMenu"> -->
+				  <!-- <a class="nav-link"  align="center" mat-menu-item [routerLink]="['viewBooks']">View Books</a>
+				  <a class="nav-link"  align="center" mat-menu-item [routerLink]="['viewNotification']">Notification</a>
+				  <a class="nav-link"  align="center" mat-menu-item [routerLink]="['request']">Request Box</a>
+				  <a class="nav-link"  align="center" mat-menu-item [routerLink]="['viewReqList']">Request List</a>
+				  <a class="nav-link"  align="center" mat-menu-item [routerLink]="['viewFavouriteBook']">Favourite Books</a>
+				<!-- </mat-menu> -->   
+			<!-- </mat-sidenav> 
+			<mat-sidenav-content>
+				<mat-toolbar> 
+					<span class="example-spacer"></span>
+					<h3 style="color: aqua;">Welcome to A2tp Online Book Store..!</h3>
+					<span class="example-spacer"></span>
+					<button mat-button [matMenuTriggerFor]="menu" title="Profile">
+						<div *ngIf="!profileImage"><img class="profilePic" src="../../assets/img/profile2.png"></div>
+						<div *ngIf="profileImage">					
+							<img class="profilePic" [src]="imagePath"/>
+						</div>
+					</button>
+				         <mat-menu #menu="matMenu">
+							<a class="nav-link" mat-menu-item [routerLink]="['profile']" >Profile</a>
+							<a class="nav-link"  mat-menu-item (click)="Logout()" >Logout</a> 
+				         </mat-menu>
+				</mat-toolbar>
+				<!-- <h3 class="alert alert-success" role="alert" align="center" style="color: darkblue;">Welcome  {{loginName}}...!!</h3> -->
+				<!-- <router-outlet></router-outlet>
+			</mat-sidenav-content>
+		  </mat-sidenav-container>
+	  </div> -->
+
+	  
+

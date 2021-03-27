@@ -1,0 +1,24 @@
+<div class="container" align="center"
+                style="margin-top: 2%; margin-left: 1%">
+                <form>
+					<h2 style="color: darkblue">Lirarian Request Details</h2>
+					<table class="table table-hover" style="background-color:transparent;width: 700px;border: 2px solid green">
+						<thead class="thead-dark">
+							<tr>
+								<!-- <th>S.No</th> -->
+								<th>User Name</th>
+								<th>Subject</th>
+								<th>Message</th>
+							</tr>
+						</thead>
+						<tbody >							
+								<tr>
+									<tr *ngFor="let viewRequest of viewLibrarianRequest ">
+									<td>{{viewRequest.username}}</td>
+									<td>{{viewRequest.subject}}</td>
+									<td>{{viewRequest.message}}</td>
+								</tr>
+						</tbody>
+                    </table>
+                    </form>
+			</div>

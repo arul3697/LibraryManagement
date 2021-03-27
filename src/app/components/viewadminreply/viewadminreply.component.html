@@ -1,0 +1,24 @@
+<div class="container" align="center"
+                style="margin-top: 2%; margin-left: 8%">
+                <form>
+					<h2 style="color: darkblue">Lirarian Request Details</h2>
+					<table class="table table-hover" style="background-color:lightgray">
+						<thead class="thead-dark">
+							<tr>
+								<!-- <th>S.No</th> -->
+								<th>User Name</th>
+								<th>Subject</th>
+								<th>Message</th>
+							</tr>
+						</thead>
+						<tbody >							
+								<tr>
+									<tr *ngFor="let viewReply of viewAdmiReply ">
+									<td>{{viewReply.username}}</td>
+									<td>{{viewReply.subject}}</td>
+									<td>{{viewReply.message}}</td>
+								</tr>
+						</tbody>
+                    </table>
+                    </form>
+			</div>

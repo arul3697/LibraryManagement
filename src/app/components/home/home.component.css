@@ -1,0 +1,48 @@
+mat-toolbar{
+    background-color: #512df5;
+    height: 1.25cm;
+    width: auto;
+}
+mat-sidenav-container{
+    background-color:transparent;
+}
+
+mat-sidenav-content{
+    background-color:transparent;
+}
+.example-container {
+    width: 400px;
+    height: 100%;
+    /* margin: 10px; */
+    border: 1px solid#eee;
+  }
+  .example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: auto;
+    left:0;
+    right: 0;
+    background: #eee;
+  }
+  mat-sidenav{
+      width: 200px;
+      background-color: yellow;
+  }
+  .logo {
+    height: 100px;
+    width: auto;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+ .profilePic {
+    height: 40px;
+    width: 40px;
+    padding: 1px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}

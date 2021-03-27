@@ -1,0 +1,40 @@
+<div class="container" align="center"
+                style="margin-top: 2%; margin-left: 0.5%">
+                <form>
+					<h2 style="color: darkblue">Book Details</h2>
+					
+					<!-- <div class="row" [hidden]="!deleteMessage"></div> -->
+                    <h3 *ngIf="add" align="center" style="color:blue;">{{add}}</h3>
+					<table class="table table-hover" style="background-color:transparent; border: 2px solid green;">
+						<thead class="thead-dark">
+							<tr>
+								<!-- <th>S.No</th> -->
+								<th>Book Name</th>
+								<th>Author Name</th>
+								<th>Publisher Name</th>
+								<th>Contact Number</th>
+								<th>Download</th>
+								<th>Favourite</th>
+							</tr>
+						</thead>
+						<tbody >
+							
+								<tr>
+									<tr *ngFor="let book of books ">
+                                   <!-- <td scope="row">{{user.id}}</td> -->
+									<td>{{book.name}}</td>
+									<td>{{book.author_name}}</td>
+									<td>{{book.publisher_name}}</td>
+                                    <td>{{book.contact_number}}</td>
+									 <td>
+										 <!-- <a href="{{book.fileName}}">Book Link</a> -->
+										<button (click)="download(book.id)" class='btn btn-primary'><i class="fa fa-download" aria-hidden="true" style="font-size:20px;color: green;"></i></button>
+									</td>
+									<td>
+										<a style="cursor: pointer;" (click)="favourite(book.id)" title="Add Favourite BookList"><i class="fa fa-star" aria-hidden="true" style="font-size:20px;color:chartreuse;"></i></a>
+									</td>
+								</tr>
+						</tbody>
+                    </table>
+                    </form>
+			</div>

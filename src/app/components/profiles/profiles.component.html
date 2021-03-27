@@ -1,0 +1,19 @@
+<div class="card border-primary" style="max-width: 22rem;margin-top: 10%; margin-left: 35%">
+    <div class="card-header" align="center">
+      <div *ngIf="!profileImage">
+      <img class="profilePic" src="../../assets/img/profileEmpty.png">
+    </div>
+    <div *ngIf="profileImage">					
+      <img class="profilePic" [src]="imagePath"/>
+    </div>
+    <a title="Edit" style="cursor: pointer;" (click)="editProfile()"><i class="fa fa-edit" aria-hidden="true" style="font-size:15px;color: blue;"></i></a>
+    </div>
+    <div class="card-body text-primary">
+      <h4 style="text-align: center;color: green;" *ngIf="updateMsg">{{updateMsg}}</h4>
+     <h4 >NAME:&nbsp;&nbsp;&nbsp;{{full_name}}</h4>
+     <h4  >Email Id: &nbsp;&nbsp;&nbsp;{{email_id}}</h4>
+     <h4 >Address: &nbsp;&nbsp;&nbsp;{{address}}</h4>
+     <h4>Contact Number: &nbsp;&nbsp;&nbsp;{{contact_number}}</h4>
+     <h4>User Name: &nbsp;&nbsp;&nbsp;{{name}}</h4>
+    </div>
+  </div>
